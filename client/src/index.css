@@ -57,6 +57,28 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+  .theme-blue {
+    background: #a855f7;
+    --background: 200 100% 90%;
+    --foreground: 200 50% 20%;
+    --primary: 200 70% 50%;
+  }
+
+  /* Pink Theme Variables */
+  .theme-pink {
+    background: #9d174d;
+    --background: 330 100% 90%;
+    --foreground: 330 50% 20%;
+    --primary: 330 70% 50%;
+  }
+
+  /* Green Theme Variables */
+  .theme-green {
+    background: rgb(63, 176, 63);
+    --background: 120 100% 90%;
+    --foreground: 120 50% 20%;
+    --primary: 120 70% 50%;
+  }
 }
 
 @layer base {

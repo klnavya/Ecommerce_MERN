@@ -23,6 +23,9 @@ import UserCartWrapper from "./cart-wrapper";
 import { useEffect, useState } from "react";
 import { fetchCartItems } from "@/store/shop/cart-slice";
 import { Label } from "../ui/label";
+import { useTheme } from '../../contexts/ThemeContext';
+
+
 
 function MenuItems() {
   const navigate = useNavigate();
@@ -81,6 +84,10 @@ function HeaderRightContent() {
 
   console.log(cartItems, "sangam");
 
+  const { theme } = useTheme();
+  //const theme = useContext(ThemeContext);
+
+
   return (
     <div className="flex lg:items-center lg:flex-row flex-col gap-4">
       <Sheet open={openCartSheet} onOpenChange={() => setOpenCartSheet(false)}>
@@ -108,9 +115,10 @@ function HeaderRightContent() {
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Avatar className="bg-black">
-            <AvatarFallback className="bg-black text-white font-extrabold">
-              {user?.userName[0].toUpperCase()}
+          <Avatar className={`${theme}`}> 
+             {/* class={`${theme}`} */}
+            <AvatarFallback  className={`${theme} text-white font-extrabold`}>
+              {user?.userName[0].toUpperCase()} 
             </AvatarFallback>
           </Avatar>
         </DropdownMenuTrigger>

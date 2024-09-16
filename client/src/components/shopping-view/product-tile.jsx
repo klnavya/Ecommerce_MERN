@@ -3,11 +3,13 @@ import { Button } from "../ui/button";
 import { brandOptionsMap, categoryOptionsMap } from "@/config";
 import { Badge } from "../ui/badge";
 
+import { useTheme } from '../../contexts/ThemeContext';
 function ShoppingProductTile({
   product,
   handleGetProductDetails,
   handleAddtoCart,
 }) {
+  const { theme } = useTheme();
   return (
     <Card className="w-full max-w-sm mx-auto">
       <div onClick={() => handleGetProductDetails(product?._id)}>
@@ -65,7 +67,7 @@ function ShoppingProductTile({
         ) : (
           <Button
             onClick={() => handleAddtoCart(product?._id, product?.totalStock)}
-            className="w-full"
+            className={`${theme} w-full`}
           >
             Add to cart
           </Button>

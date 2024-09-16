@@ -12,6 +12,7 @@ import { Label } from "../ui/label";
 import StarRatingComponent from "../common/star-rating";
 import { useEffect, useState } from "react";
 import { addReview, getReviews } from "@/store/shop/review-slice";
+import { useTheme } from '../../contexts/ThemeContext';
 
 function ProductDetailsDialog({ open, setOpen, productDetails }) {
   const [reviewMsg, setReviewMsg] = useState("");
@@ -22,6 +23,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
   const { reviews } = useSelector((state) => state.shopReview);
 
   const { toast } = useToast();
+  const { theme } = useTheme();
 
   function handleRatingChange(getRating) {
     console.log(getRating, "getRating");
@@ -152,7 +154,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
               </Button>
             ) : (
               <Button
-                className="w-full"
+                className={`${theme} w-full`}
                 onClick={() =>
                   handleAddToCart(
                     productDetails?._id,

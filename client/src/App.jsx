@@ -24,8 +24,7 @@ import PaypalReturnPage from "./pages/shopping-view/paypal-return";
 import PaymentSuccessPage from "./pages/shopping-view/payment-success";
 import SearchProducts from "./pages/shopping-view/search";
 import SettingsIcon from '@mui/icons-material/Settings';
-
-
+import { useTheme } from "./contexts/ThemeContext";
 function App() {
   const { user, isAuthenticated, isLoading } = useSelector(
     (state) => state.auth
@@ -41,7 +40,8 @@ function App() {
   if (isLoading) return <Skeleton className="w-[800px] bg-black h-[600px]" />;
 
   const toggleWidget = () => setIsWidgetOpen(!isWidgetOpen);
-
+  const { theme, switchTheme } = useTheme();
+  
   let toggleHeaderFixed = () => {
     setHeaderFixed(true);
     setActiveButton("fixed");
@@ -68,12 +68,18 @@ function App() {
 
       {/* Widget */}
       <div
-        className={`fixed top-[192px] left-0 h-64 w-64 bg-white text-black transform ${
+        className={`fixed top-[192px] left-0 h-64 w-64 bg-white rounded-tr-[40%] rounded-br-[40%] text-black transform ${
           isWidgetOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out z-40`}
       >
         
-        <div className="p-4">
+        <div className="p-4 relative top-8">
+        <div className="fixed bottom-20 p-2 bg-white shadow-lg rounded-lg">
+      <button onClick={() => switchTheme('bg-blue-600')} className="p-2 bg-blue-500 text-white rounded mr-2">Blue</button>
+      <button onClick={() => switchTheme('bg-pink-600')} className="p-2 bg-pink-500 text-white rounded mr-2">Pink</button>
+      <button onClick={() => switchTheme('bg-green-600')} className="p-2 bg-green-500 text-white rounded">Green</button>
+    </div>
+
           <div className="flex space-x-2">
           <h4 className="text-lg font-semibold	">Header</h4>
           <div className="flex justify-between bg-gray-500 w-[120px] rounded-md">
